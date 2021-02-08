@@ -1,9 +1,11 @@
 function startTime() {
-    let today = new Date();
+  const docYear = document.querySelector('#year');
+  
+  let today = new Date();
     
     //Year
     let yyyy = today.getFullYear();
-    document.getElementById('year').innerHTML = yyyy;
+    docYear.innerHTML = yyyy;
     
     //Weekday
     let wdnum = today.getDay();
@@ -37,3 +39,8 @@ function startTime() {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
   }
+
+  //CLEAN UP THIS MESS
+  //DYNAMIC QUOTE FROM EXTERNAL SOURCE
+  //RESPONSIVE
+  //ADD TO COUCHVEGGIE
