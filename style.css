@@ -1,4 +1,6 @@
 body {
+  height: 100vh;
+  width: 100vw;
     background: black;
     display: flex;
     justify-content: center;
@@ -7,17 +9,17 @@ body {
   
   a {
     text-decoration: none;
-    margin: 50px;
+    /*margin: 50px;*/
   }
   
   .card {
-    z-index: 0;
     width: 220px;
     height: 320px;
     padding: 2px 2px;
     background: none;
     position: relative;
     transition: linear 0.5s;
+    z-index: 0;
   }
   
   .card:hover {

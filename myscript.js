@@ -1,5 +1,11 @@
+const docYear = document.querySelector('#year');
+const docWeekDay = document.querySelector('#weekday');
+const docDate = document.querySelector('#date');
+const docMonth = document.querySelector('#month');
+const docTime = document.querySelector('#time')
+
 function startTime() {
-  const docYear = document.querySelector('#year');
+  
   
   let today = new Date();
     
@@ -11,16 +17,16 @@ function startTime() {
     let wdnum = today.getDay();
     let wd = new Array('Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag');
     
-    document.getElementById('weekday').innerHTML = wd[wdnum];
+    docWeekDay.innerHTML = wd[wdnum];
     
     //Date
     let dd = today.getDate();
-    document.getElementById('date').innerHTML = dd;
+    docDate.innerHTML = dd;
      
     //Month
     let mmnum = today.getMonth();
     let mm = new Array('Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December')
-    document.getElementById('month').innerHTML = mm[mmnum];
+    docMonth.innerHTML = mm[mmnum];
     
     
     let h = today.getHours();
@@ -30,7 +36,7 @@ function startTime() {
     m = checkTime(m);
     s = checkTime(s);
     
-    document.getElementById('time').innerHTML =
+    docTime.innerHTML =
     h + ":" + m + ":" + s;
     let t = setTimeout(startTime, 500);
   }
@@ -40,7 +46,6 @@ function startTime() {
     return i;
   }
 
-  //CLEAN UP THIS MESS
   //DYNAMIC QUOTE FROM EXTERNAL SOURCE
   //RESPONSIVE
   //ADD TO COUCHVEGGIE
