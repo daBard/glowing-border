@@ -1,99 +1,125 @@
+:root {
+  font-size: 18px;
+  --colorBackground: black;
+  --colorCardHover: #332;
+  --colorDarkText: #777;
+  --colorText: #cecece;
+  --colorUpperCorner: blue;
+  --colorUpperGlow: darkblue;
+  --colorLowerCorner: red;
+  --colorLowerGlow: darkred;
+}
+
 body {
   height: 100vh;
   width: 100vw;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  background: var(--colorBackground);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
-  a {
-    text-decoration: none;
-    /*margin: 50px;*/
-  }
-  
-  .card {
-    width: 220px;
-    height: 320px;
-    padding: 2px 2px;
-    background: none;
-    position: relative;
-    transition: linear 0.5s;
-    z-index: 0;
-  }
-  
-  .card:hover {
-    /*background: linear-gradient(45deg, #111, black, black, black, #111);*/
-    box-shadow: 12px -12px 35px -15px #332, 
-      -12px 12px 35px -15px #332;
-  }
-  
-  .card::before {
-    content: "";
-    width: 160px;
-    height: 160px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background: linear-gradient(315deg, black, black, blue);
-    box-shadow: -18px -18px 35px -5px darkblue;
-    z-index: -1;
-  }
-  
-  .card::after {
-    content: "";
-    width: 160px;
-    height: 160px;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    background: linear-gradient(135deg, black, black, red);
-    box-shadow: 18px 18px 35px -15px darkred;
-    z-index: -1;
-  }
-  
-  .card-text-box {
-    z-index: 0;
-    width: 220px;
-    height: 320px;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .card-text-box div {
-    padding: 0 18px;
-    color: #cecece;
-    font-family: Arial, non-serif;
-    font-size: 24px;
-    text-align: center;
-  }
-  
-  #weekday {
-    margin-top: 18px;
-  }
-  
-  #date {
-    font-size: 92px;
-    margin-top: 12px;
-    line-height: 90%;
-  }
-  
-  #time {
-    margin-top: auto;
-  }
-  
-  #text {
-    margin-top: auto;
-    font-size: 14px;
-    font-style: italic;
-  }
-  
-  #year {
-    margin-top: auto;
-    margin-bottom: 18px;
-    font-size: 14px;
-    color: #777;
-  }
+a {
+  text-decoration: none;
+  /*margin: 50px;*/
+}
+
+.card {
+  width: 12.22rem;
+  height: 20.28rem;
+  padding: 0.11rem 0.11rem;
+  background: none;
+  position: relative;
+  transition: linear 0.5s;
+  z-index: 0;
+}
+
+.card:hover {
+  /*box-shadow: 0.67rem -0.67rem 1.94rem -0.83rem var(--colorCardHover), 
+    -0.67rem 0.67rem 1.94rem -0.83rem var(--colorCardHover);*/
+    box-shadow: 0 0 2.5rem -0.25rem var(--colorCardHover);
+}
+
+.card::before {
+  content: "";
+  max-width: 160px;
+  max-height: 160px;
+  width: 8.89rem;
+  height: 8.89rem;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: linear-gradient(315deg, var(--colorBackground), var(--colorBackground), var(--colorUpperCorner));
+  box-shadow: -1rem -1rem 1.94rem -0.28rem var(--colorUpperGlow);
+  /*box-shadow: -18px -18px 35px 5px var(--colorUpperGlow);*/
+  z-index: -1;
+  transition: linear 0.5s;
+}
+
+.card::after {
+  content: "";
+  max-width: 160px;
+  max-height: 160px;
+  width: 8.89rem;
+  height: 8.89rem;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background: linear-gradient(135deg, var(--colorBackground), var(--colorBackground), var(--colorLowerCorner));
+  box-shadow: 1rem 1rem 1.94rem -0.28rem var(--colorLowerGlow);
+  z-index: -1;
+  opacity: 1;
+  transition: linear 0.5s;
+}
+
+.card:hover::before, .card:hover::after {
+  opacity: 0;
+  /*background: linear-gradient(135deg, var(--colorBackground), var(--colorBackground), var(--colorBackground));;
+  box-shadow: none;*/
+}
+
+.card-text-box {
+  z-index: 0;
+  width: 12.22rem;
+  height: 20.28rem;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card-text-box div {
+  padding: 0 1rem;
+  color: var(--colorText);
+  font-family: Arial, non-serif;
+  font-size: 1.33rem;
+  text-align: center;
+}
+
+#weekday {
+  margin-top: 1rem;
+}
+
+#date {
+  font-size: 5.11rem;
+  margin-top: 0.67rem;
+  line-height: 90%;
+}
+
+#time {
+  margin-top: auto;
+}
+
+#quote {
+  margin-top: auto;
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+#year {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  color: var(--colorDarkText,#777);
+}
