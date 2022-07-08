@@ -17,6 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
   
 a {
@@ -27,10 +28,10 @@ a {
 .card {
   width: 12.22rem;
   height: 20.28rem;
-  padding: 0.11rem 0.11rem;
+  padding: 0.11rem;
   background: none;
   position: relative;
-  transition: linear 0.5s;
+  transition: linear 0.3s;
   z-index: 0;
 }
 
@@ -53,7 +54,7 @@ a {
   box-shadow: -1rem -1rem 1.94rem -0.28rem var(--colorUpperGlow);
   /*box-shadow: -18px -18px 35px 5px var(--colorUpperGlow);*/
   z-index: -1;
-  transition: linear 0.5s;
+  transition: linear 0.2s;
 }
 
 .card::after {
@@ -69,13 +70,24 @@ a {
   box-shadow: 1rem 1rem 1.94rem -0.28rem var(--colorLowerGlow);
   z-index: -1;
   opacity: 1;
-  transition: linear 0.5s;
+  transition: linear 0.2s;
 }
 
-.card:hover::before, .card:hover::after {
-  opacity: 0;
-  /*background: linear-gradient(135deg, var(--colorBackground), var(--colorBackground), var(--colorBackground));;
-  box-shadow: none;*/
+/*LETS TRY ANIMATION AND MOVE THESE UP AND DOWN OR LEFT AND RIGHT*/
+
+@keyframes test {
+  from {left: 0px;}
+  to {right: 0px;}
+}
+
+.card:hover::before {
+  /*opacity: 0;*/
+  /*animation: test linear 1s 1s;*/
+  right: 0px;
+}
+
+.card:hover::after {
+
 }
 
 .card-text-box {
@@ -98,27 +110,38 @@ a {
 }
 
 #weekday {
-  margin-top: 1rem;
+  margin-top: 0.67rem;
 }
 
 #date {
   font-size: 5.11rem;
   margin-top: 0.67rem;
-  line-height: 90%;
+  line-height: 3.83rem;
+}
+
+#month {
+  margin-top: 0.67rem;
 }
 
 #time {
-  margin-top: auto;
+  margin-top: 0.67rem;
+}
+
+#quote-box {
+  margin: auto 0;
 }
 
 #quote {
-  margin-top: auto;
-  font-size: 0.78rem;
+  font-size: 0.67rem;
   font-style: italic;
 }
 
+#author {
+  margin-top: 0.3rem;
+  font-size: 0.67rem;
+}
+
 #year {
-  margin-top: auto;
   margin-bottom: 1rem;
   font-size: 0.78rem;
   color: var(--colorDarkText,#777);

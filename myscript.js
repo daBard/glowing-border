@@ -4,6 +4,7 @@ const docDate = document.querySelector('#date');
 const docMonth = document.querySelector('#month');
 const docTime = document.querySelector('#time');
 const docQuote = document.querySelector('#quote');
+const docAuthor = document.querySelector('#author');
 
 function initSite() {
   //setSize();
@@ -54,22 +55,15 @@ function checkTime(i) {
 }
 
 //DYNAMIC QUOTE FROM EXTERNAL SOURCE
-function setQuote() {
+async function setQuote() {
   //let quoteText = "This is the cool quote that everyone is reading!";
-  //let jsonQuote = getQuote().then(response => response.json());
-  let jsonQuote = getQuote();
-  console.log(jsonQuote);
-  docQuote.innerHTML = jsonQuote.text;
+  let jsonQuote = await getQuote();
+  console.log(jsonQuote[0].category);
+  docQuote.innerHTML = `"${jsonQuote[0].text}"` 
+  docAuthor.innerHTML = `- ${jsonQuote[0].author}`;
 }
 
-//CAN'T REALLY FIGURE OUT HOW TO USE DATA FROM RESULTING OF THE PROMISE
-
-
-
-
-
-
-function getQuote() {
+async function getQuote() {
   const options = {
     method: 'GET',
     headers: {
@@ -80,10 +74,19 @@ function getQuote() {
   
   return fetch('https://famous-quotes4.p.rapidapi.com/random?category=all&count=1', options)
     .then(response => response.json())
-    .then(resData => {return resData})
+    .then(resData => {
+      return resData;
+    })
     .catch(err => console.error(err));
 }
 
 
+
   //RESPONSIVE
   //ADD TO COUCHVEGGIE
+
+  window.onload = () => {
+    setTimeout(() => {
+      document.body.style.opacity = "100";
+    }, 500);
+  };
