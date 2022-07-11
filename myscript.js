@@ -1,3 +1,9 @@
+//SAW SOMETHING SIMILAR, THOUGHT IT LOOKED COOL AND TRIED TO BUILD IT MYSELF
+//ENDED UP BECOMING AN EXPERIMENT WITH RESPONSIVNESS, REM AND ROOT FONT-SIZE - PROBABLY A BAD IDEA BUT THERE IT IS
+
+const docRoot = document.querySelector(':root');
+const docCard = document.querySelector('.card');
+const docCardTextBox = document.querySelector('.card-text-box');
 const docYear = document.querySelector('#year');
 const docWeekDay = document.querySelector('#weekday');
 const docDate = document.querySelector('#date');
@@ -6,11 +12,23 @@ const docTime = document.querySelector('#time');
 const docQuote = document.querySelector('#quote');
 const docAuthor = document.querySelector('#author');
 
+//START FUNCTION
 function initSite() {
-  //setSize();
+  setSize();
   startTime();
   setQuote();
+  //test();
 }
+
+//RESIZE CARD WHEN RESIZE WINDOW
+onresize = () => {setSize()};
+
+//LET GETQUOTE COMPLETE BEFORE SHOWING CARD
+window.onload = () => {    
+  setTimeout(() => {
+    document.body.style.opacity = "100";
+  }, 500);
+};
 
 //RUN DATE AND TIME
 function startTime() {
@@ -54,15 +72,14 @@ function checkTime(i) {
   return i;
 }
 
-//DYNAMIC QUOTE FROM EXTERNAL SOURCE
+//SET QUOTE FROM API
 async function setQuote() {
-  //let quoteText = "This is the cool quote that everyone is reading!";
   let jsonQuote = await getQuote();
-  console.log(jsonQuote[0].category);
   docQuote.innerHTML = `"${jsonQuote[0].text}"` 
   docAuthor.innerHTML = `- ${jsonQuote[0].author}`;
 }
 
+//GET QUOTE FROM API
 async function getQuote() {
   const options = {
     method: 'GET',
@@ -72,7 +89,7 @@ async function getQuote() {
     }
   };
   
-  return fetch('https://famous-quotes4.p.rapidapi.com/random?category=all&count=1', options)
+  return fetch('https://famous-quotes4.p.rapidapi.com/random?category=wisdom&count=1', options)
     .then(response => response.json())
     .then(resData => {
       return resData;
@@ -80,13 +97,39 @@ async function getQuote() {
     .catch(err => console.error(err));
 }
 
+//SET CARD SIZE BASED ON WINDOWS WIDTH AND HEIGHT
+function setSize() {
+  let windowWidth = window.innerWidth;
+  let windowHeight = window.innerHeight;
+  let newSize;
+
+  if ((windowWidth * 1.618) > windowHeight) {
+    newSize = ((windowHeight * 0.6) / 22.81).toFixed();
+    docRoot.style.fontSize = `${newSize.toString()}px`;
+      
+  }
+  else {
+    newSize = (((windowWidth * 0.6) / 13.75).toFixed());
+    docRoot.style.fontSize = `${newSize.toString()}px`;
+  }
+  console.log(docRoot.style.fontSize);
+}
 
 
-  //RESPONSIVE
   //ADD TO COUCHVEGGIE
 
-  window.onload = () => {
-    setTimeout(() => {
-      document.body.style.opacity = "100";
-    }, 500);
-  };
+  //THIS JUST GETS THE CATEGORIES
+  function test() {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '7efda4e701msh2ae1e22621e9274p1f82f5jsn5c96fe065d0c',
+        'X-RapidAPI-Host': 'famous-quotes4.p.rapidapi.com'
+      }
+    };
+    
+    fetch('https://famous-quotes4.p.rapidapi.com/', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+  }

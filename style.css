@@ -1,5 +1,5 @@
 :root {
-  font-size: 18px;
+  font-size: 16px;
   --colorBackground: black;
   --colorCardHover: #332;
   --colorDarkText: #777;
@@ -22,112 +22,152 @@ body {
   
 a {
   text-decoration: none;
-  /*margin: 50px;*/
 }
 
 .card {
-  width: 12.22rem;
-  height: 20.28rem;
-  padding: 0.11rem;
+  max-width: 60vw;
+  max-height: 60vh;
+  width: 13.75rem; /*220px*/
+  height: 22.81rem; /*365px*/
+  padding: 0.125rem; /*2px*/
   background: none;
   position: relative;
-  transition: linear 0.3s;
   z-index: 0;
 }
 
-.card:hover {
-  /*box-shadow: 0.67rem -0.67rem 1.94rem -0.83rem var(--colorCardHover), 
-    -0.67rem 0.67rem 1.94rem -0.83rem var(--colorCardHover);*/
-    box-shadow: 0 0 2.5rem -0.25rem var(--colorCardHover);
-}
-
-.card::before {
-  content: "";
-  max-width: 160px;
-  max-height: 160px;
-  width: 8.89rem;
-  height: 8.89rem;
+.upper-corner {
+  max-width: 53.36vw;
+  max-height: 53.36vw;
+  width: 9.17rem; /*2/3 OF CARD WIDTH*/
+  height: 9.17rem; /*SAME*/
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: -0.06rem;
+  left: -0.06rem;
   background: linear-gradient(315deg, var(--colorBackground), var(--colorBackground), var(--colorUpperCorner));
-  box-shadow: -1rem -1rem 1.94rem -0.28rem var(--colorUpperGlow);
-  /*box-shadow: -18px -18px 35px 5px var(--colorUpperGlow);*/
   z-index: -1;
-  transition: linear 0.2s;
-  /*transition: left linear 0.2s;*/
 }
 
-.card::after {
+.upper-corner::before {
   content: "";
-  max-width: 160px;
-  max-height: 160px;
-  width: 8.89rem;
-  height: 8.89rem;
+  max-width: 48.05vw;
+  max-height: 48.05vw;
+  width: 8.25rem; /*9/10 OF UP-CORNER*/
+  height: 8.25rem; /*SAME*/
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  top: 1.125rem; /*18px*/
+  left: 1.125rem; /*18px*/
+  box-shadow: -1.125rem -1.125rem 2.19rem -0.31rem var(--colorUpperGlow); /*18px 18px 35px 5px*/
+  z-index: -2;
+}
+
+@keyframes upper-beat {
+  5% {
+    top: 0.44rem; /*7px*/
+    left: 0.44rem;
+  }
+  15% {
+    top: 1.125rem; /*18px*/
+    left: 1.125rem;
+  }
+  25% {
+    top: 0.25rem; /*4px*/
+    left: 0.25rem;
+  }
+  100% {
+    top: 1.125rem;
+    left: 1.125rem;
+  }
+}
+
+.card:hover > .upper-corner::before {
+  animation: upper-beat 1s ease-out infinite;
+}
+
+.lower-corner {
+  max-width: 53.36vw;
+  max-height: 53.36vw;
+  width: 9.17rem;
+  height: 9.17rem;
+  position: absolute;
+  bottom: -0.06rem;
+  right: -0.06rem;
   background: linear-gradient(135deg, var(--colorBackground), var(--colorBackground), var(--colorLowerCorner));
-  box-shadow: 1rem 1rem 1.94rem -0.28rem var(--colorLowerGlow);
   z-index: -1;
-  opacity: 1;
-  transition: linear 0.2s;
 }
 
-/*LETS TRY ANIMATION AND MOVE THESE UP AND DOWN OR LEFT AND RIGHT*/
-
-@keyframes test {
-  from {left: 0px;}
-  to {right: 0px;}
+.lower-corner::before {
+  content: "";
+  max-width: 48.05vw;
+  max-height: 48.05vw;
+  width: 8.25rem;
+  height: 8.25rem;
+  position: absolute;
+  bottom: 1.125rem;
+  right: 1.125rem;
+  box-shadow: 1.125rem 1.125rem 2.19rem -0.31rem var(--colorLowerGlow);
+  z-index: -2;
 }
 
-.card:hover::before {
-  /*opacity: 0;*/
-  /*animation: test linear 1s 1s;*/
-  /*left: 100%;*/
-  background: linear-gradient(45deg, var(--colorBackground), var(--colorBackground), var(--colorUpperCorner));
-  box-shadow: -1rem -1rem 1.94rem -0.28rem var(--colorUpperGlow);
+@keyframes lower-beat {
+  5% {
+    bottom: 0.44rem;
+    right: 0.44rem;
+  }
+  15% {
+    bottom: 1.125rem;
+    right: 1.125rem;
+  }
+  25% {
+    bottom: 0.25rem;
+    right: 0.25rem;
+  }
+  100% {
+    bottom: 1.125rem;
+    right: 1.125rem;
+  }
 }
 
-.card:hover::after {
-
+.card:hover > .lower-corner::before {
+  animation: lower-beat 1s ease-out infinite;
 }
-
+ 
 .card-text-box {
-  z-index: 0;
-  width: 12.22rem;
-  height: 20.28rem;
+  max-width: 60vw;
+  max-height: 60vh;
+  width: 13.75rem; /*220px*/
+  height: 22.81rem; /*365px*/
   background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  z-index: 0;
 }
 
 .card-text-box div {
-  padding: 0 1rem;
+  padding: 0 1.125rem;
   color: var(--colorText);
   font-family: Arial, non-serif;
-  font-size: 1.33rem;
+  font-size: 1.5rem; /*24px*/
   text-align: center;
 }
 
 #weekday {
-  margin-top: 0.67rem;
+  margin-top: 1.125rem;
 }
 
 #date {
-  font-size: 5.11rem;
-  margin-top: 0.67rem;
-  line-height: 3.83rem;
+  font-size: 4.875rem; /*78px*/
+  margin-top: 0.75rem; /*12px*/
+  line-height: 3.625rem; /*58px*/
 }
 
 #month {
-  margin-top: 0.67rem;
+  margin-top: 0.75rem; /*12px*/
 }
 
 #time {
-  margin-top: 0.67rem;
+  margin-top: 0.75rem; /*12px*/
 }
 
 #quote-box {
@@ -135,17 +175,17 @@ a {
 }
 
 #quote {
-  font-size: 0.67rem;
+  font-size: 0.75rem; /*12px*/
   font-style: italic;
 }
 
 #author {
-  margin-top: 0.3rem;
-  font-size: 0.67rem;
+  margin-top: 0.31rem; /*5px*/
+  font-size: 0.75rem; /*12px*/
 }
 
 #year {
-  margin-bottom: 1rem;
-  font-size: 0.78rem;
+  margin-bottom: 1.125rem;
+  font-size: 0.875rem; /*14px*/
   color: var(--colorDarkText,#777);
 }
