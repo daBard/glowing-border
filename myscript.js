@@ -13,7 +13,7 @@ const docQuote = document.querySelector('#quote');
 const docAuthor = document.querySelector('#author');
 
 //START FUNCTION
-function initSite() {
+function initGlowyCard() {
   setSize();
   startTime();
   setQuote();
