@@ -45,6 +45,26 @@ a {
   left: -0.06rem;
   background: linear-gradient(315deg, var(--colorBackground), var(--colorBackground), var(--colorUpperCorner));
   z-index: -1;
+  opacity: 1;
+}
+
+@keyframes upper-lower-box-beat {
+  75% {
+    opacity: 0.22;
+  }
+  80% {
+    opacity: 0.57;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.22;
+  }
+}
+
+.card:hover > .upper-corner, .card:hover > .lower-corner {
+  animation: upper-lower-box-beat 1s ease-out infinite;
 }
 
 .upper-corner::before {
@@ -54,33 +74,33 @@ a {
   width: 8.25rem; /*9/10 OF UP-CORNER*/
   height: 8.25rem; /*SAME*/
   position: absolute;
-  top: 1.125rem; /*18px*/
-  left: 1.125rem; /*18px*/
+  top: 0.25rem; /*18px*/
+  left: 0.25rem; /*18px*/
   box-shadow: -1.125rem -1.125rem 2.19rem -0.31rem var(--colorUpperGlow); /*18px 18px 35px 5px*/
   z-index: -2;
 }
 
-@keyframes upper-beat {
-  5% {
-    top: 0.44rem; /*7px*/
-    left: 0.44rem;
-  }
-  15% {
+@keyframes upper-box-shadow-beat {
+  75% {
     top: 1.125rem; /*18px*/
     left: 1.125rem;
   }
-  25% {
+  80% {
+    top: 0.44rem; /*7px*/
+    left: 0.44rem;
+  }
+  90% {
     top: 0.25rem; /*4px*/
     left: 0.25rem;
   }
   100% {
-    top: 1.125rem;
+    top: 1.125rem; /*18px*/
     left: 1.125rem;
   }
 }
 
 .card:hover > .upper-corner::before {
-  animation: upper-beat 1s ease-out infinite;
+  animation: upper-box-shadow-beat 1s ease-out infinite;
 }
 
 .lower-corner {
@@ -93,6 +113,7 @@ a {
   right: -0.06rem;
   background: linear-gradient(135deg, var(--colorBackground), var(--colorBackground), var(--colorLowerCorner));
   z-index: -1;
+  opacity: 1;
 }
 
 .lower-corner::before {
@@ -102,33 +123,33 @@ a {
   width: 8.25rem;
   height: 8.25rem;
   position: absolute;
-  bottom: 1.125rem;
-  right: 1.125rem;
+  bottom: 0.25rem;
+  right: 0.25rem;
   box-shadow: 1.125rem 1.125rem 2.19rem -0.31rem var(--colorLowerGlow);
   z-index: -2;
 }
 
-@keyframes lower-beat {
-  5% {
-    bottom: 0.44rem;
-    right: 0.44rem;
-  }
-  15% {
-    bottom: 1.125rem;
+@keyframes lower-box-shadow-beat {
+  75% {
+    bottom: 1.125rem; /*18px*/
     right: 1.125rem;
   }
-  25% {
-    bottom: 0.25rem;
+  80% {
+    bottom: 0.44rem; /*7px*/
+    right: 0.44rem;
+  }
+  90% {
+    bottom: 0.25rem; /*4px*/
     right: 0.25rem;
   }
   100% {
-    bottom: 1.125rem;
+    bottom: 1.125rem; /*18px*/
     right: 1.125rem;
   }
 }
 
 .card:hover > .lower-corner::before {
-  animation: lower-beat 1s ease-out infinite;
+  animation: lower-box-shadow-beat 1s ease-out infinite;
 }
  
 .card-text-box {
