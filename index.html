@@ -1,27 +1,38 @@
-<head>
-    <link rel = "stylesheet" type = "text/css" href = "reset.css" />
-    <link rel = "stylesheet" type = "text/css" href = "style.css" />
-</head>
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Glowing border</title>
+        <meta name="description" content="Saw it online, thought it looked cool and wanted to make one myself. Became an exercise in responsiveness.">
+        <meta name="keywords" content="utbildning, webdev, frontend">
+        <meta name="author" content="Couchveggie">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<body>
-    <a href="#">
-        <div class="card">
-            <div class="upper-corner"></div>
-            <div class="lower-corner"></div>
-            <div class="card-text-box">
-                <div id="weekday"></div>
-                <div id="date"></div>
-                <div id="month"></div>
-                <div id="time"></div>
-                <div id="quote-box">
-                    <div id="quote"></div>
-                    <div id="author"></div>
+        <link rel = "stylesheet" type = "text/css" href = "reset.css" />
+        <link rel = "stylesheet" type = "text/css" href = "style.css" />
+    </head>
+
+    <body>
+        <a href="#">
+            <div class="card">
+                <div class="upper-corner"></div>
+                <div class="lower-corner"></div>
+                <div class="card-text-box">
+                    <div id="weekday"></div>
+                    <div id="date"></div>
+                    <div id="month"></div>
+                    <div id="time"></div>
+                    <div id="quote-box">
+                        <div id="quote"></div>
+                        <div id="author"></div>
+                    </div>
+                    <div id="year"></div>
                 </div>
-                <div id="year"></div>
             </div>
-        </div>
-    </a>
+        </a>
 
-    <script src="myscript.js"></script>
-    <script>initGlowyCard();</script>
-</body>
+        <script src="myscript.js"></script>
+        <script>initGlowyCard();</script>
+    </body>
+</html>
